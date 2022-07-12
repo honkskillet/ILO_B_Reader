@@ -1,3 +1,5 @@
 ## ignore dicom folder
 dicom/
 
+## pdf  output files
+*.pdf
