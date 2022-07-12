@@ -1,0 +1,10 @@
+✔ import from dicom file @done(22-07-11 20:51)
+✔ output to @done(22-07-11 20:51)
+  ✔ png @done(22-07-11 20:51)
+  ✔ pdf @done(22-07-11 20:51)
+☐ download NIH png
+  ☐ DICOMs?
+☐ image segmentation
+☐ data generation?
+☐ train to work on NIH fibrosis images
+☐ retrain output layer on ILO data
