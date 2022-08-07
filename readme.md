@@ -11,6 +11,8 @@ View Position
 AP                577        79       21059
 PA                 51       648       39302
 ```
+More work with DataFrames
+See read_csv.ipynb for more
 #### 8/4
 - Working with CSV (comma separated file) which identifies (see read_csv.py)
 - Researched dataframes (ie Panda.py)
