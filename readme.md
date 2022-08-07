@@ -3,6 +3,18 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
+#### 8/5
+- Interestingly, in NIH dataset there are 648 studies with fibrosis taken in the PA projection.  (Only 79 AP studies)  The PA studies would be more applicable to ILO CXR comparison because those are also PA projection studies.
+```
+Finding Labels  Edema  Fibrosis  No Finding
+View Position                              
+AP                577        79       21059
+PA                 51       648       39302
+```
+#### 8/4
+- Working with CSV (comma separated file) which identifies (see read_csv.py)
+- Researched dataframes (ie Panda.py)
+- Practicum presentations day (all lunch and afternoon)
 #### 8/3
 - Talked with Nickie regarding best ways to obtain pantex images
 - Viewed stack of old x-ray films (pre mid-2008) in the H buildling filing room
