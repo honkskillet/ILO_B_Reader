@@ -3,6 +3,19 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
+#### 8/9
+- In service exam!
+- Afternoon lectures.
+- Worked on code for transfer learning classification of NIH images (PA normals vs PA fibrosis)
+#### 8/8
+- Researching "transfer learning".  That is were you use parts of state of the art neural networks instead of trying to create an entire NN from scratch.  This are good for tasks such a image categorization, which is what I am doing here. Some good resources.
+  - https://keras.io/api/applications/ (list of different networks, aka 'applications')
+  - https://www.youtube.com/watch?v=LsdxvjLWkIY
+  - https://github.com/codebasics/deep-learning-keras-tf-tutorial/blob/master/18_transfer_learning/cnn_transfer_learning.ipynb
+  - https://github.com/nachi-hebbar/Transfer-Learning-Keras/blob/main/TransferLearning.ipynb
+  - https://www.youtube.com/watch?v=lHM458ZsfkM
+  - https://github.com/aladdinpersson/Machine-Learning-Collection
+  - https://www.youtube.com/watch?v=WJZoywOG1cs
 #### 8/5
 - Interestingly, in NIH dataset there are 648 studies with fibrosis taken in the PA projection.  (Only 79 AP studies)  The PA studies would be more applicable to ILO CXR comparison because those are also PA projection studies.
 ```
