@@ -1,5 +1,7 @@
 ## ignore dicom folder
 dicom/
+datasets/
+
 
 ## pdf  output files
 *.pdf

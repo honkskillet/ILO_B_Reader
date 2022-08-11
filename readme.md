@@ -3,10 +3,15 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
+#### 8/10
+Working on Keras CNN with transfer learning
 #### 8/9
 - In service exam!
-- Afternoon lectures.
+- Afternoon board/exam review and meetings.
 - Worked on code for transfer learning classification of NIH images (PA normals vs PA fibrosis)
+- Lung Segmentation (Masking out everything but lung parenchyma) Research 
+  - https://www.kaggle.com/datasets/farhanhaikhan/unet-lung-segmentation-weights-for-chest-x-rays/code
+  - https://www.kaggle.com/code/nikhilpandey360/lung-segmentation-from-chest-x-ray-dataset/notebook
 #### 8/8
 - Researching "transfer learning".  That is were you use parts of state of the art neural networks instead of trying to create an entire NN from scratch.  This are good for tasks such a image categorization, which is what I am doing here. Some good resources.
   - https://keras.io/api/applications/ (list of different networks, aka 'applications')
