@@ -3,8 +3,55 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
+#### 8/11
+Worked mostly on rewritting code to use a different Keras Application (pretrain neural network).  Focused on the Xception network, the highest scoring Keras App. Below are network model.summary() statements. Most of the complexity is hidden within the pretrained layer.  Both layers were initially trained on the imagenet dataset.  I retrained both on a flower dataset with 5 types of flower.  I only trained for 2 epochs because it is VERY slow on my computer.  It took 30m13s to train the slower Xception network.  The benefit of Xception over MobileNetV2 is that it can take a 299 by 299 pixel image, while MNv2 can only take a 224 x 224.
+```
+Model: "model_2"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_7 (InputLayer)        [(None, 299, 299, 3)]     0         
+                                                                 
+ xception (Functional)       (None, 10, 10, 2048)      20861480  
+                                                                 
+ global_average_pooling2d_2   (None, 2048)             0         
+ (GlobalAveragePooling2D)                                        
+                                                                 
+ dense_2 (Dense)             (None, 5)                 10245     
+                                                                 
+=================================================================
+Total params: 20,871,725
+Trainable params: 10,245
+Non-trainable params: 20,861,480
+_________________________________________________________________
+```
+```
+Model: "sequential_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ keras_layer_1 (KerasLayer)  (None, 1280)              2257984   
+                                                                 
+ dense (Dense)               (None, 5)                 6405      
+                                                                 
+=================================================================
+Total params: 2,264,389
+Trainable params: 6,405
+Non-trainable params: 2,257,984
+_________________________________________________________________
+```
+
+```
+Epoch 1/2
+86/86 [==============================] - 839s 9s/step - loss: 0.4555 - sparse_categorical_accuracy: 0.8536
+Epoch 2/2
+86/86 [==============================] - 877s 10s/step - loss: 0.3399 - sparse_categorical_accuracy: 0.8928
+<keras.callbacks.History at 0x17cbe0ca0>
+```
 #### 8/10
-Working on Keras CNN with transfer learning
+- Working on Keras CNN with transfer learning
+- First working CNN.  Uses a pretrained Keras application to solve know problem (identification of 5 different types of flowers from a data... roses, tulips, etc)
+- Mr Reeves has found most of older-than 2008 studies.  Nickie provided some info for him to locate the 2 remaining.  Nickie has found most of the physical film studies; some might be missing the films.
 #### 8/9
 - In service exam!
 - Afternoon board/exam review and meetings.
