@@ -11,7 +11,7 @@
 #### 8/12
 - Frustrating AM trying to download the dicom versions of the NIH from the google cloud.  I am just interested to see if the DICOM images are larger than the 1024x1024 pngs.  Unbale to get the "requester pays" request to work.  I requested access to the Google BigData and Google Health Api access points.
 - Contacted Dr Ronald Summers, who is the senior NIH investigor in charge of the NIH dataset.  He was unable to help with using google to get larger size images.
-- Researched using blended pretrained CNN and traditional machine learning (ie Random Forrest).  RF is **faster** and might be better with smalle data sets.  (Pantex dataset is very small, NIH is ~medium sized)
+- Researched using blended pretrained CNN and traditional machine learning (ie Random Forest).  RF is **faster** and might be better with smalle data sets.  (Pantex dataset is very small, NIH is ~medium sized)
 #### 8/11
 Worked mostly on rewritting code to use a different Keras Application (pretrain neural network).  Focused on the Xception network, the highest scoring Keras App. Below are network model.summary() statements. Most of the complexity is hidden within the pretrained layer.  Both layers were initially trained on the imagenet dataset.  I retrained both on a flower dataset with 5 types of flower.  I only trained for 2 epochs because it is VERY slow on my computer.  It took 30m13s to train the slower Xception network.  The benefit of Xception over MobileNetV2 is that it can take a 299 by 299 pixel image, while MNv2 can only take a 224 x 224.
 ```
