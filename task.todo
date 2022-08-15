@@ -4,8 +4,8 @@
   ✔ pdf @done(22-07-11 20:51)
 ☐ Talk to Nikki W about data collectin plan 
   ☐ Plan A - Get images from radiology PAX
-    ☐ Need list of patient numbers for referencing images in PAX 
-    ☐ Discuss with Findlay or Radiology support staff
+    ✔ Need list of patient numbers for referencing images in PAX @done(22-08-12 10:15)
+    ✔ Discuss with Findlay or Radiology support staff (Reeves) @done(22-08-12 10:14)
   ☐ Plan B 
     ☐ Obtain directly from pantex files 
 ☐ download NIH images
@@ -16,7 +16,13 @@
   ☐ DICOMs?
 ☐ image segmentation
 ☐ data generation?
+☐ Transfer learning
+  ✔ Train to work with know datasets (flowers dataset) @done(22-08-12 10:17)
+  ☐ Train to work with NIH Fibrosis image
+    ☐ Preprocess CXR images
+    ☐ Train output layer(s)
+      ☐ Save output layer(s) trained on NIH CXR images (so the can be used with Pantex CXR images)
+    ☐ Fine tune entire neural network?
 ☐ train to work on NIH fibrosis images
 ☐ retrain output layer on ILO data
   ☐ can practice retraining on subset of NIH images to prove feasability?
-☐ 

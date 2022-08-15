@@ -3,6 +3,15 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
+#### 8/15
+- Ran several simulations over the weekend with VGG16 as the feature detector (transfer learning) and random forrest as the output layer classifier.  VERY SLOW on my 2012 laptop.  Initially some promise using 512x512 scaled NIH images (normal vs fibrosis) - 67% accuracy, but accuracy got worse (?) on larger 768x768 scale NIH images (only 50%, ie coin toss).  Could only run for 2 epochs due to slowness of money (~3 hours for the 768 images). (See output confusion_matrices folder.)  Will probably change to MNv2 for quicker feature detection and use either a NN output layer or SVM
+- Researched Support Vector Machines
+  - https://www.baeldung.com/cs/svm-vs-neural-network
+  - https://github.com/krishnaik06/Complete-Deep-Learning/blob/master/Image%20Classification%20Using%20SVM.ipynb
+#### 8/12
+- Frustrating AM trying to download the dicom versions of the NIH from the google cloud.  I am just interested to see if the DICOM images are larger than the 1024x1024 pngs.  Unbale to get the "requester pays" request to work.  I requested access to the Google BigData and Google Health Api access points.
+- Contacted Dr Ronald Summers, who is the senior NIH investigor in charge of the NIH dataset.  He was unable to help with using google to get larger size images.
+- Researched using blended pretrained CNN and traditional machine learning (ie Random Forrest).  RF is **faster** and might be better with smalle data sets.  (Pantex dataset is very small, NIH is ~medium sized)
 #### 8/11
 Worked mostly on rewritting code to use a different Keras Application (pretrain neural network).  Focused on the Xception network, the highest scoring Keras App. Below are network model.summary() statements. Most of the complexity is hidden within the pretrained layer.  Both layers were initially trained on the imagenet dataset.  I retrained both on a flower dataset with 5 types of flower.  I only trained for 2 epochs because it is VERY slow on my computer.  It took 30m13s to train the slower Xception network.  The benefit of Xception over MobileNetV2 is that it can take a 299 by 299 pixel image, while MNv2 can only take a 224 x 224.
 ```
@@ -48,6 +57,7 @@ Epoch 2/2
 86/86 [==============================] - 877s 10s/step - loss: 0.3399 - sparse_categorical_accuracy: 0.8928
 <keras.callbacks.History at 0x17cbe0ca0>
 ```
+See CLSFR_Flowers_Xception.ipynb notebooke for code, output
 #### 8/10
 - Working on Keras CNN with transfer learning
 - First working CNN.  Uses a pretrained Keras application to solve know problem (identification of 5 different types of flowers from a data... roses, tulips, etc)
@@ -97,3 +107,4 @@ See read_csv.ipynb for more
 - Lung Segmentation from Chest X-ray Data: https://www.kaggle.com/code/nikhilpandey360/lung-segmentation-from-chest-x-ray-dataset/notebook
 - Prediction of Pulmonary Fibrosis Based on X-Rays by Deep Neural Network:
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8976624/  
+- https://github.com/anshuak100/NIH-Chest-X-ray-Dataset/blob/master/nih%20mobilenet.ipynb

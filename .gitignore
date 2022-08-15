@@ -2,6 +2,6 @@
 dicom/
 datasets/
 ImageNetSamples/
-
+gcs_download.ipynb
 ## pdf  output files
 *.pdf
