@@ -8,6 +8,7 @@
 - Researched Support Vector Machines
   - https://www.baeldung.com/cs/svm-vs-neural-network
   - https://github.com/krishnaik06/Complete-Deep-Learning/blob/master/Image%20Classification%20Using%20SVM.ipynb
+- Further work might need to be moved to google Colab for increased performance (at least for public database training)
 #### 8/12
 - Frustrating AM trying to download the dicom versions of the NIH from the google cloud.  I am just interested to see if the DICOM images are larger than the 1024x1024 pngs.  Unbale to get the "requester pays" request to work.  I requested access to the Google BigData and Google Health Api access points.
 - Contacted Dr Ronald Summers, who is the senior NIH investigor in charge of the NIH dataset.  He was unable to help with using google to get larger size images.
