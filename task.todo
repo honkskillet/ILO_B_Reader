@@ -9,13 +9,16 @@
   ☐ Plan B 
     ☐ Obtain directly from pantex files 
 ☐ download NIH images
-  ☐ PNGs
-    ☐ Download all zips (~3GB x 11)
-    ☐ Keep only the fibrosis studies and some normals for comparison
-    ☐ Delete remaining studies
+  ✔ PNGs @done(22-08-17 14:31)
+    ✔ Download all zips (~3GB x 11) @done(22-08-17 14:31)
+    ✘ Keep only the fibrosis studies and some normals for comparison @cancelled(22-08-17 14:32)
+    ✘ Delete remaining studies @cancelled(22-08-17 14:31)
   ☐ DICOMs?
-☐ image segmentation
+    ✔ Requested access from google to big data table @done(22-08-15 14:32)
+☐ image segmentation (make a mask for areas outside chest vacity)
+✔ save model weight after every epoch (can pick up where you left off) @done(22-08-17 14:33)
 ☐ data generation?
+☐ Transition to cloud
 ☐ Transfer learning
   ✔ Train to work with know datasets (flowers dataset) @done(22-08-12 10:17)
   ☐ Train to work with NIH Fibrosis image
@@ -25,4 +28,4 @@
     ☐ Fine tune entire neural network?
 ☐ train to work on NIH fibrosis images
 ☐ retrain output layer on ILO data
-  ☐ can practice retraining on subset of NIH images to prove feasability?
+  ✘ can practice retraining on subset of NIH images to prove feasability? @cancelled(22-08-17 14:34)
