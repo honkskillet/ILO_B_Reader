@@ -4,12 +4,11 @@
 ----
 ## JOURNAL
 
-#### 8/18
-
+#### 8/18  
 UPDATE:
 Not good results with the image segmentation (masking).  This was based on a previoulsy published model.  I uploaded the model directly and used the already set weights.  
 ![image info](./pictures/NIH.gif)
---
+
 Working on image segmentation (masks) today. Some image segmentation resources.  
 - Repository that includes hfd5 file for a CXR Image Segmentation - https://github.com/harsha-20/Medical-Image-Segmentation 
 - Script for loading the hfd5 file - https://www.kaggle.com/code/eduardomineo/lung-segmentation-of-rsna-challenge-data/notebook 

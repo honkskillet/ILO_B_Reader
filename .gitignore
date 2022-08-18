@@ -4,6 +4,8 @@ datasets/
 ImageNetSamples/
 checkpoints/
 models/
+segmentation/input/
+segmentation/segmentation/
 gcs_download.ipynb
 ## pdf  output files
 *.pdf
