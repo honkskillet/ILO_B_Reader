@@ -3,10 +3,26 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
-#### 8/17
 
+#### 8/18
+Working on image segmentation (masks) today.  Ran overnight 
+Image size 512x512
+525 images each of Normal, Fibrosis, Emphysema. 20 Epochs.
+Total validation accuracy peaked at ~46%, but it was the last epoch (would have improved?)
+![image info](./pictures/818_loss_accuracy.png)
+![image info](./pictures/818_heatmap.png)
+Ways to improve resuts
+- More Epochs?
+- Increase image resolution (might try 768 overnight, 1024 overload my computers memory)
+- Mask (image segmentation)
+- Generative images (could increase data set by ~5x)
+#### 8/17
+- More work on CNN with NIH images.   
+- Improved code so save model/weight so that training can be resumed from prior point.
+- Briefly met with Dr Rowlett.  Discussed cloud computing for more computer power.  I'd likely try google colab cloud first.
+- Wrote code to plot loss & accuracy vs epochs plots for both test and training.
 #### 8/16
-Called into clinic.  No progress.
+Called in to OHC clinic.  No progress.
 #### 8/15
 - Ran several simulations over the weekend with VGG16 as the feature detector (transfer learning) and random forrest as the output layer classifier.  VERY SLOW on my 2012 laptop.  Initially some promise using 512x512 scaled NIH images (normal vs fibrosis) - 67% accuracy, but accuracy got worse (?) on larger 768x768 scale NIH images (only 50%, ie coin toss).  Could only run for 2 epochs due to slowness of money (~3 hours for the 768 images). (See output confusion_matrices folder.)  Will probably change to MNv2 for quicker feature detection and use either a NN output layer or SVM
 - Researched Support Vector Machines
