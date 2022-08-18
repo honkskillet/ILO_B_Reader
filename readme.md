@@ -5,17 +5,27 @@
 ## JOURNAL
 
 #### 8/18
-Working on image segmentation (masks) today.  Ran overnight 
+
+UPDATE:
+Not good results with the image segmentation (masking).  This was based on a previoulsy published model.  I uploaded the model directly and used the already set weights.  
+![image info](./pictures/NIH.gif)
+--
+Working on image segmentation (masks) today. Some image segmentation resources.  
+- Repository that includes hfd5 file for a CXR Image Segmentation - https://github.com/harsha-20/Medical-Image-Segmentation 
+- Script for loading the hfd5 file - https://www.kaggle.com/code/eduardomineo/lung-segmentation-of-rsna-challenge-data/notebook 
+- ipynb that describes the image segmentation research - https://www.kaggle.com/code/eduardomineo/u-net-lung-segmentation-montgomery-shenzhen/notebook
+Ran overnight 
 Image size 512x512
 525 images each of Normal, Fibrosis, Emphysema. 20 Epochs.
 Total validation accuracy peaked at ~46%, but it was the last epoch (would have improved?)
 ![image info](./pictures/818_loss_accuracy.png)
-![image info](./pictures/818_heatmap.png)
+![image info](./pictures/818_heatmap.png)  
 Ways to improve resuts
 - More Epochs?
 - Increase image resolution (might try 768 overnight, 1024 overload my computers memory)
 - Mask (image segmentation)
 - Generative images (could increase data set by ~5x)
+- Increase complexity of output layers (currently only one Dense layer).  The more layers ==> more **trainable** parameters ==>  longer the training times.
 #### 8/17
 - More work on CNN with NIH images.   
 - Improved code so save model/weight so that training can be resumed from prior point.

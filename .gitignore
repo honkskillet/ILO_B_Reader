@@ -3,6 +3,7 @@ dicom/
 datasets/
 ImageNetSamples/
 checkpoints/
+models/
 gcs_download.ipynb
 ## pdf  output files
 *.pdf
