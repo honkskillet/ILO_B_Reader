@@ -3,7 +3,13 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
-
+#### 8/19  
+Reasearch Dealing with imbalanced classes (a lot more normal CXR than abnormals in the NIH dataset)  
+- Downsampling.  Will do this to some extent just so I don't have to process 40k+ normal CXRs
+- Upsampling (for abnormals just make duplicates until you have equal numbers in each class )
+- Combine some down and upsampling (I will probably do this)
+- Generative imaging upsampling.  Generate images for abnormals (ie fibrosis) until numbers equal.  
+- Ensemble method - Basically splitting the larger classes into subclasses and creating separate models for subclass with the entire dataset of the small class. Then combining all these submodels via some technique (ie majority vote or random forest, etc ). Not very practical in my case where I am considering multiple classes all with different counts
 #### 8/18  
 UPDATE:
 Not good results with the image segmentation (masking).  This was based on a previoulsy published model.  I uploaded the model directly and used the already set weights.  
