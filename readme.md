@@ -3,8 +3,13 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
+#### 8/22
+- Lots of work friday evening, over the weekend and this morning rewriting the way the model works.  The old code read everything into RAM.  Even with virtual memory, this could exceed the total memory of my laptop.  1st rewrite using generators.  It worked but the work flow made it difficult to do custom sample (over/undersampling) to account for the imbalanced clasees (that is we have way more CXRs that are normal than those that have fibrosis).  Plus I noticed that the flow_from_directory functions using generators were actually deprecated in favor of using tensorflow datasets.  So I rewrote using datasers.  Documentation online is, er, sparse. Works currently.  I haven't re-implimented oversampling yet.  Currently it is working with adjusted weights (10x weight given to fibrosis images).
+- While running the fitting using the (now scrapped) generator code I noticed, while doing sanity checks on images, that some of the underlying NIH classifications are prettys suspect.  In particular, follow up studies on a particular patient seem to be particularly prone to having findings miscategorized.  For example a few patient may have ~50 follows in a year.  This likely represents a hospitalization were numerous CXRs taken to track progress.  When you look at these CXRs they have many obvious findings (ie large effusions, prominent atelectasis) but they will have been marked as 'No Finding' in the NIH database.  I suspect that the radiologist read of these studies said something like 'no interval change', and that was read as 'No Finding' by the NIH algorithm.  To mitigate this problem, I will only select initial 'No Findings' studies for each patient.  Even with this filter I have more than 10x 'No Findings' compared to Fibrosis studies.
+- Rewroked the data directory again, selecting just 'Fibrosis' and 'No Findings' studies.  'No Findings' studies were limited to the 10 times the number of Fibrosis studies and 'no followup studies'
 #### 8/19  
-Reasearch Dealing with imbalanced classes (a lot more normal CXR than abnormals in the NIH dataset)  
+Overnight ploaded subset of NIH dataset to google drive to be used with google colab. Work on getting code working on cloud to improve computational power.
+Reasearch Dealing with imbalanced classes (a lot more normal CXR than abnormals in the NIH dataset).  Excellent resournce at imbalance-learn https://imbalanced-learn.org/stable/introduction.html
 - Downsampling.  Will do this to some extent just so I don't have to process 40k+ normal CXRs
 - Upsampling (for abnormals just make duplicates until you have equal numbers in each class )
 - Combine some down and upsampling (I will probably do this)
