@@ -7,6 +7,7 @@ models/
 segmentation/
 segmentation/*
 Pantex/*
+CXRay.xlsx
 checkpoints/
 gcs_download.ipynb
 ## pdf  output files
