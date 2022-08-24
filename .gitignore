@@ -6,6 +6,7 @@ checkpoints/
 models/
 segmentation/
 segmentation/*
+Pantex/*
 checkpoints/
 gcs_download.ipynb
 ## pdf  output files
