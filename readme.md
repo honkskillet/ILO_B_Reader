@@ -4,9 +4,10 @@
 ----
 ## JOURNAL
 #### 8/24
-- Step over 2 hours this AM setting up Google Cloud's Vertex AI - used for launch AI virtual machines - only to find that the global quota for GPUs for new users is 0.  This service has a non-costomer friendly AWS-like interface.  I requested the quota be lifted to 1, but the autoated reply said this could take 2 or 3 working days.  It is impossible to talk to a human. Maybe I can use this service next week.  Will continue wit Colab for now.
+- Step over 2 hours this AM setting up Google Cloud's Vertex AI - used for launch AI virtual machines - only to find that the global quota for GPUs for new users is 0.  This service has a non-costomer friendly AWS-like interface.  I requested the quota be lifted to 1, but the autoated reply said this could take 2 or 3 working days.  It is impossible to talk to a human. Maybe I can use this service next week.  Will continue with Colab for now.
 - Wrote to Mr Reeves asking for normal studies.
-- Ran a longer fit on Colab 
+- Updgraded Colab account.  Ran a longer fit on Colab with interesting results.  At this point to handle the imbalance in the Normal vs Fibrosis sets I am using a weighting strategy.  Essentially, since I have 10x the number a normals, during fitting a correct normal image fit is weighted 1/10th the value of a correct Fibrosis image.  However, there is a degenerate local min for the loss function where the fit can mark all (or most) of the Fibrosis images correctly without regards to the results of normals.  One a relatively large fit of 100 Epoch, 768x768 pixel) the fit training accuracy crashed from 92% on Epoch 79 to 9.2% on Epoch 81, where it stayed for the rest of the Epoch. (See plot) I suspect this is due to the imbalanced weights stategy for handling imbalanced sets.  I will try to balance train sets with generative oversampling.
+- ![fit](./pictures/TrapFit.png)
 #### 8/23
 Tuesday, limited progress due to student meetings & first MPH classes.  I did realize that Mr Reeves from radiology had uploaded the Pantex Fibrosis images.  The folder/file structure is rather chaotic, with some scanned images mixed in with the CXR images.  I wrote a python script that extracts the images from the folders, renames thems with Pantex ID in the file name and places them in a flat folder structure. 
 #### 8/22
@@ -34,7 +35,7 @@ Working on image segmentation (masks) today. Some image segmentation resources.
 Ran overnight 
 Image size 512x512
 525 images each of Normal, Fibrosis, Emphysema. 20 Epochs.
-Total validation accuracy peaked at ~46%, but it was the last epoch (would have improved?)
+Total validation accuracy peaked at ~46%, but it was the last epoch (would have improved?)  
 ![image info](./pictures/818_loss_accuracy.png)
 ![image info](./pictures/818_heatmap.png)  
 Ways to improve resuts
