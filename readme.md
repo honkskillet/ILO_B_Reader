@@ -3,6 +3,11 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
+- Spent most of the day grappling with a difficult bug related to tensorflow datasets and calculating accuracy after the model has been fit.  It deals with how shuffling is applied to the validation set.  See the (highly techncal) discussion I started here... https://stackoverflow.com/questions/73503162/tensorflow-accuracy-from-model-predict-does-not-match-final-epoch-val-accuracy-o/73504187?noredirect=1#comment129805165_73504187
+#### 8/25
+- Worked on fixing the heat map visualization (Was broken after upgrading input pipeline to tensorflow datasets).
+- Researched data augmentation when using the tensorflow dataset pipeline.
+- Reshaped the NIH dataset with oversampling.
 #### 8/24
 - Step over 2 hours this AM setting up Google Cloud's Vertex AI - used for launch AI virtual machines - only to find that the global quota for GPUs for new users is 0.  This service has a non-costomer friendly AWS-like interface.  I requested the quota be lifted to 1, but the autoated reply said this could take 2 or 3 working days.  It is impossible to talk to a human. Maybe I can use this service next week.  Will continue with Colab for now.
 - Wrote to Mr Reeves asking for normal studies.
@@ -25,13 +30,13 @@ Reasearch Dealing with imbalanced classes (a lot more normal CXR than abnormals 
 - Ensemble method - Basically splitting the larger classes into subclasses and creating separate models for subclass with the entire dataset of the small class. Then combining all these submodels via some technique (ie majority vote or random forest, etc ). Not very practical in my case where I am considering multiple classes all with different counts
 #### 8/18  
 UPDATE:
-Not good results with the image segmentation (masking).  This was based on a previoulsy published model.  I uploaded the model directly and used the already set weights.  
+Not good results with the image segmentation (masking).  This was based on a previoulsy published model.  I uploaded the model directly and used the already-set weights.  
 ![image info](./pictures/NIH.gif)
 
 Working on image segmentation (masks) today. Some image segmentation resources.  
 - Repository that includes hfd5 file for a CXR Image Segmentation - https://github.com/harsha-20/Medical-Image-Segmentation 
 - Script for loading the hfd5 file - https://www.kaggle.com/code/eduardomineo/lung-segmentation-of-rsna-challenge-data/notebook 
-- ipynb that describes the image segmentation research - https://www.kaggle.com/code/eduardomineo/u-net-lung-segmentation-montgomery-shenzhen/notebook
+- ipynb that describes the image segmentation research - https://www.kaggle.com/code/eduardomineo/u-net-lung-segmentation-montgomery-shenzhen/notebook  
 Ran overnight 
 Image size 512x512
 525 images each of Normal, Fibrosis, Emphysema. 20 Epochs.
