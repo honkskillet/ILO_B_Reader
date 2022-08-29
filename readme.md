@@ -3,7 +3,18 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
+#### 8/29
+- Busy weekend. Rewrote the oversampling and augmentation code.  I hit a wall with trying to do oversampling via the dataset input pipeline.  See the stackoverflow question I raised on the topic (tehcnical)  https://stackoverflow.com/questions/73513996/using-tensorflow-dataset-for-custom-image-oversampling .  Decided to go the brute force method (duplicating files in storage), so I rewrote that code for both oversampling and augmentation. (Work on the augmentation portion continued from the weekend into this morning.)
+- I was also finally granted access to GPUs in google cloud.  Up until now I had been using Google Colab to run the code.  Google Cloud Platform is more professional oriented while google Colab is more educational oriented. One big benefit of GCP is more storage which is persistent (don't need to connect to google drive every time I do something).  Alse seems to have better github integration.
+- Work continued on augmentation.  Here is an exaple applying subtle random zoom, translation and rotation one of the fibrosis images.  By appying these transforms randonly to our oversampled imgase it should in theory improve the generalizability of our model fit.
+- ![augmentation](./pictures/augmentation_example.png)
+#### 8/26
 - Spent most of the day grappling with a difficult bug related to tensorflow datasets and calculating accuracy after the model has been fit.  It deals with how shuffling is applied to the validation set.  See the (highly techncal) discussion I started here... https://stackoverflow.com/questions/73503162/tensorflow-accuracy-from-model-predict-does-not-match-final-epoch-val-accuracy-o/73504187?noredirect=1#comment129805165_73504187
+- Ran a 50 Epoch, 768x768 fit that was coverging on > 90% accuracy... however accidentally loaded an early model state and lost the final fit. When I reran it again found the degenerate solution, foused on just match the heavilty weighted Fibrosis cases.  Here is the 2x2 confusion matrix, where 119 is true positive Fibrosis predictions and 1282 is false positives.  The model makes zero negative (no findings) predictions.
+[ 119    0]  
+[1282    0]  
+Whether the fit false into this trap seems random, but probably more likely the longer it runs.  Again, this is an artifact of using weights to account for the imbalanced data sets (more normals than fibrosis images).  Oversampling fibrosis images will likely solve this, but make the epoch ~ 2x as long to run.  
+  ![fit](./pictures/TrapFit2.png)
 #### 8/25
 - Worked on fixing the heat map visualization (Was broken after upgrading input pipeline to tensorflow datasets).
 - Researched data augmentation when using the tensorflow dataset pipeline.
