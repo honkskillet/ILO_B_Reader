@@ -1,12 +1,17 @@
 ## ignore dicom folder
+dicom/*/*/*
+dicom/*/*
 dicom/*
+dicom/
 datasets/
+datasets/*
 ImageNetSamples/
 checkpoints/
 models/
 segmentation/
 segmentation/*
 Pantex/*
+Pantex/
 CXRay.xlsx
 checkpoints/
 gcs_download.ipynb
