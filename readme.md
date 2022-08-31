@@ -3,11 +3,21 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
+#### 8/31
+- Downloaded Pantex normals.  I had previous 'flattened' our collection of pantex studies with positive profusions. I did the same with the normal studies and combined them with the positive profusion studies into a file structure that the image loader expects.
+- Wrote a python script that loads the models that have been trained on the NIH data and applies them to the Pantex images.  The Pantex images CANT live in the cloud so this script is meant to be run locally.  It is for 'prediction' and not 'fitting' so slow local cpu/gpu not as much as an issue.
+#### 8/30
+- Met with Dr Rowlett to discuss progress.
+- First run on google cloud platform (GCP).  Improvement over google colab because I have a dedicate GPU and the service won't log you out for inactivity or for extended use.  This service does cost $0.44/hr but the first $300 are free.  Other improvement 100GB of storage, storage persists when the VM is stopped, better access to GPUs, jupyter lab, GIT integration.
+- First GCP fit results with accuracy over 95%, still running as I type with val_accuracy approaching 70%  
+- It might be worthwhile to manually filter out mislabelled NIH CXRs (with my own eyes). I started worked on writing a simple GUI app that would display the images in batches for quick review.  
+- Added Tensorboard to code for realtime visualization during a model fit.
 #### 8/29
 - Busy weekend. Rewrote the oversampling and augmentation code.  I hit a wall with trying to do oversampling via the dataset input pipeline.  See the stackoverflow question I raised on the topic (tehcnical)  https://stackoverflow.com/questions/73513996/using-tensorflow-dataset-for-custom-image-oversampling .  Decided to go the brute force method (duplicating files in storage), so I rewrote that code for both oversampling and augmentation. (Work on the augmentation portion continued from the weekend into this morning.)
 - I was also finally granted access to GPUs in google cloud.  Up until now I had been using Google Colab to run the code.  Google Cloud Platform is more professional oriented while google Colab is more educational oriented. One big benefit of GCP is more storage which is persistent (don't need to connect to google drive every time I do something).  Alse seems to have better github integration.
-- Work continued on augmentation.  Here is an exaple applying subtle random zoom, translation and rotation one of the fibrosis images.  By appying these transforms randonly to our oversampled imgase it should in theory improve the generalizability of our model fit.
-- ![augmentation](./pictures/augmentation_example.png)
+- Work continued on augmentation.  Here is an exaple applying subtle random zoom, translation and rotation one of the fibrosis images.  By appying these transforms randonly to our oversampled imgase it should in theory improve the generalizability of our model fit.   
+  ![augmentation](./pictures/augmentation_example.png)
+- I received the Pantex normal studies tranche from Mr Reeves (radiolog tech) today.
 #### 8/26
 - Spent most of the day grappling with a difficult bug related to tensorflow datasets and calculating accuracy after the model has been fit.  It deals with how shuffling is applied to the validation set.  See the (highly techncal) discussion I started here... https://stackoverflow.com/questions/73503162/tensorflow-accuracy-from-model-predict-does-not-match-final-epoch-val-accuracy-o/73504187?noredirect=1#comment129805165_73504187
 - Ran a 50 Epoch, 768x768 fit that was coverging on > 90% accuracy... however accidentally loaded an early model state and lost the final fit. When I reran it again found the degenerate solution, foused on just match the heavilty weighted Fibrosis cases.  Here is the 2x2 confusion matrix, where 119 is true positive Fibrosis predictions and 1282 is false positives.  The model makes zero negative (no findings) predictions.
