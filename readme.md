@@ -4,8 +4,8 @@
 ----
 ## JOURNAL
 #### 8/31
-- Downloaded Pantex normals.  I had previous 'flattened' our collection of pantex studies with positive profusions. I did the same with the normal studies and combined them with the positive profusion studies into a file structure that the image loader expects.
-- Wrote a python script that loads the models that have been trained on the NIH data and applies them to the Pantex images.  The Pantex images CANT live in the cloud so this script is meant to be run locally.  It is for 'prediction' and not 'fitting' so slow local cpu/gpu not as much as an issue.
+- Downloaded Pantex normals.  I had previous 'flattened' our collection of pantex studies with positive profusions. I did the same with the normal studies and combined them with the positive profusion studies into a file structure that the image loader expects.  Converted dicoms to PNGs for same reason.
+- Wrote a python script that loads the models that have been trained on the NIH data and applies them to the Pantex images.  The Pantex images CANT live in the cloud so this script is meant to be run locally.  It is for 'prediction' and not 'fitting' so slow local cpu/gpu not as much as an issue.  
 #### 8/30
 - Met with Dr Rowlett to discuss progress.
 - First run on google cloud platform (GCP).  Improvement over google colab because I have a dedicate GPU and the service won't log you out for inactivity or for extended use.  This service does cost $0.44/hr but the first $300 are free.  Other improvement 100GB of storage, storage persists when the VM is stopped, better access to GPUs, jupyter lab, GIT integration.
