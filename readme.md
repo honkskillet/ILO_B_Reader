@@ -3,6 +3,10 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
+#### 9/7
+Submitted poster to WOEMA/WOHC.
+#### 9/5
+Research month has ended.  Pushing to finish results for WOEMA poster submission.
 #### 9/2  
 - I took another look at output layers on the model.  These are the layers that are appended after the prebuilt 'keras application', in our case inceptionV3. I had been using two dense fully connect NN layers.  These were attaining very high accuracy on the training data, >95%, but much lower accuracy on the validation data.  Furthermore the validation accuracy was very unstable from epoch to epoch.  I think represents a high degree of overfitting.  I went back to inceptionV3 publications and looked at the output layers they were using.  It seems they were using, sequentially: Pooling Layer (either Max or Avg) ==> Drop out Layer ==> Dense Fully Connected Layer ==> Softmax Layer. I ran this on the old dataset (pre-screened) while I reshaped and ran oversampling on the newly shaped dataset to make it usable for the fitting algorithm.   
   50 EPOCHS AT 768x768 pixels   
