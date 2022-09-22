@@ -3,6 +3,35 @@
 ### UTHCT Occupaional Medicine 2023
 ----
 ## JOURNAL
+#### 9/2  
+- I took another look at output layers on the model.  These are the layers that are appended after the prebuilt 'keras application', in our case inceptionV3. I had been using two dense fully connect NN layers.  These were attaining very high accuracy on the training data, >95%, but much lower accuracy on the validation data.  Furthermore the validation accuracy was very unstable from epoch to epoch.  I think represents a high degree of overfitting.  I went back to inceptionV3 publications and looked at the output layers they were using.  It seems they were using, sequentially: Pooling Layer (either Max or Avg) ==> Drop out Layer ==> Dense Fully Connected Layer ==> Softmax Layer. I ran this on the old dataset (pre-screened) while I reshaped and ran oversampling on the newly shaped dataset to make it usable for the fitting algorithm.   
+  50 EPOCHS AT 768x768 pixels   
+  TRAINING BEST   
+  accuracy:  0.7933333516120911 at Epoch 50  
+  loss:      0.4497603476047516 at Epoch 50  
+  VALIDATION BEST   
+  accuracy:  0.7598425149917603 at Epoch 19  
+  loss:      0.5171330571174622 at Epoch 14  
+  ---
+  Accuracy =  0.7401574803149606 (this is just the final epoch accuracy and fit, which wasn't the best of the run)  
+              Fibrosis  No Finding  
+  Fibrosis          87          40  
+  No Finding        26         101  
+- Additional training Friday afternoon and evening, including at 1024 pixels, with validation accuracy plateuing at ~75% (as in the run above).  In all these fits, if allowed to run long enough the training accuracy will diverge from the val_accuracy, a clear sign of overfitting. I have previously seen all the images in the Fibrosis clas when screening all the images for obviously mislabels (ie,  lateral view studies). Many of the images in the fibrosis class are marginal calls at best.  I suspect the ~75% ceiling represents the underlying limitations of the NIH dataset.  The Pantex dataset, while smaller, I believe is superior on an image per image basis because of the ILO reads.  (Better representation of 'ground thruth'.)  So I am hopeful using the model with the Pantex positive-profusion data will still provide meaningful results.
+- I did notice that with equal weighted classes (1.0 weights for both firbosis and no findings), the model does have identify 'No Finding' better than 'Fibrosis'.  Again, I think this may be due to overcalls in the Fibrosis class.  But I notice that if I adjust the weight values I can 'tune' the model to preferentially call 'Fibrosis' over 'No Findings'.  Interestingly the overall accuracy remains stable at ~75%.
+- Saturday, implimeneted Keras Tuner.  This is a module that programmatically adjusts 'hyperparameters' in order to see what the best model fit is. I chose to let the computer adjust 3 parameters (plus epoches).  The 3 were whether to use an average or max pooling layer before the final classiciation layers, how much dropout to use in the range of 0 to 20%, and what weight to give the fibrosis class.  These were the results.
+  Trial 30 Complete [00h 24m 02s]
+  Total elapsed time: 05h 16m 04s
+  val_accuracy: 0.7047244310379028 (for final trial)
+  Best val_accuracy So Far: 0.7559055089950562 (not really an improvement from my random searching)
+  {'pooling_layer': 'avg',    
+   'dropout': 0.07039050491373137,
+   'fibrosis_class_weight': 1.2066898285179302,
+   'tuner/epochs': 12}
+#### 9/1
+- Focused today on removing obviously mislabeled images from the NIH dataset.  In particular there are quite a few obviously abnormal image in the "No Findings" subset of the dataset.
+- Speant the AM and early afternoon finishing a simple GUI application that displays 12 CXR image so I could quickly review NIH images.  The point here was to "re-read" these studies.  Rather just to eliminate obvious misclassifications.  Some examles, patients with complete opacification of one hemithorax, extensive metastatic disease, upside down images, lateral views (they should all be PA).
+- Removed 201 of 6369 (3.2%) from the normal class, removed 2 of 638 from the Fibrosis subset. (Took approximately 5 to 6 hour, late into the evening.)
 #### 8/31
 - Downloaded Pantex normals.  I had previous 'flattened' our collection of pantex studies with positive profusions. I did the same with the normal studies and combined them with the positive profusion studies into a file structure that the image loader expects.  Converted dicoms to PNGs for same reason.
 - Wrote a python script that loads the models that have been trained on the NIH data and applies them to the Pantex images.  The Pantex images CANT live in the cloud so this script is meant to be run locally.  It is for 'prediction' and not 'fitting' so slow local cpu/gpu not as much as an issue.  

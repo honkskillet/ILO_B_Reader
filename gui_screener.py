@@ -23,8 +23,11 @@ columns = 4
 image_width = window_width / columns
 image_height = window_height/ rows
 
-source_dir ='./dicom/NIH_1stPA_Norm_Fib/Fibrosis' 
-dest_dir ='./dicom/NIH_1stPA_Norm_Fib/screened_out/Fibrosis' 
+# source_dir ='./dicom/NIH_1stPA_Norm_Fib/Fibrosis' 
+# dest_dir ='./dicom/NIH_1stPA_Norm_Fib/screened_out/Fibrosis' 
+
+source_dir ='./dicom/NIH_1stPA_Norm_Fib/No Finding' 
+dest_dir ='./dicom/NIH_1stPA_Norm_Fib/screened_out/No Finding' 
 
 file_names = os.listdir(source_dir)
 total_image_count = len(file_names)
@@ -38,10 +41,10 @@ images=[]
 batch_number=0
 
 def reset_vars():
+  global image_tags, images_to_reject, current_file_names
   image_tags = np.zeros((rows,columns),dtype=np.int8)
   images_to_reject = np.zeros((rows,columns),dtype=np.int8)
   current_file_names = np.empty((rows,columns),dtype="U16")
-  images=[]
 
 def load_more_images():
   global images, batch_number, total_image_count
@@ -86,7 +89,7 @@ key_map = {'q':0,'w':1,'e':2,'r':3,'a':4,'s':5,'d':6,'f':7,'z':8,'x':9,'c':10,'v
 #   print( e.char, e )
 
 def up(e):
-  
+  global image_tags, images_to_reject, current_file_names
   # MARK FILES TO REJECT
   if e.char in key_map:
     print(e.char,key_map[e.char])
@@ -111,6 +114,8 @@ def up(e):
       print(index, image_to_reject_flat[index])
       if(image_to_reject_flat[index] != 0):
         shutil.move(f"{source_dir}/{file_names_flat[index]}",f"{dest_dir}/{file_names_flat[index]}")
+        canvas.delete(image_to_reject_flat[index]) # DELETE THE RED X's FROM CANVAS
+    # DELETE THE IMAGE FROM CANVAS
     for tag in iter(np.array(image_tags).flatten()):
       canvas.delete(tag)
     reset_vars()
